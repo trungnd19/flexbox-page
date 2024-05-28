@@ -35,16 +35,18 @@
     }
 
     // select the sibling of the selected input (2 thẻ con ngang hàng)
-    &__input:focus + &__button {
+    &__input:focus+&__button {
         background-color: var(--color-grey-light-3);
     }
 
     &__button {
         border: none;
         background-color: var(--color-grey-light-2);
+
         &:focus {
             outline: none;
         }
+
         &:active {
             transform: translateY(2px);
         }
@@ -64,7 +66,7 @@
     align-items: center;
     align-self: stretch;
 
-    & > * {
+    &>* {
         height: 100%;
         padding: 0 2rem;
         cursor: pointer;
@@ -72,7 +74,7 @@
         align-items: center;
     }
 
-    & > *:hover {
+    &>*:hover {
         background-color: var(--color-grey-light-2);
     }
 
@@ -86,9 +88,7 @@
         fill: var(--color-grey-dark-2)
     }
 
-    &__user {
-
-    }
+    &__user {}
 
     &__notifications {
         font-size: .8rem;
@@ -120,6 +120,7 @@
 
     &__item {
         position: relative;
+
         &:not(:last-child) {
             margin-bottom: .5rem;
         }
@@ -135,11 +136,11 @@
         height: 100%;
 
         transform: scaleY(0);
-        transition: transform .2s, width .3s cubic-bezier(1,0,0,1) .2s, background-color .1s;
+        transition: transform .2s, width .3s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
         // transform-origin: bottom;
     }
 
-    &__item:hover::before, 
+    &__item:hover::before,
     &__item--active::before {
         transform: scaleY(1);
         width: 100%;
@@ -149,7 +150,7 @@
         background-color: var(--color-primary-light);
     }
 
-    &__link:link, 
+    &__link:link,
     &__link:visited {
         color: var(--color-grey-light-1);
         text-decoration: none;
@@ -183,6 +184,7 @@
 ///////////////////// Gallery
 .gallery {
     display: flex;
+
     &__photo {
         width: 100%;
         display: block;
@@ -195,7 +197,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: var(--line);;
+    border-bottom: var(--line);
+    ;
 
     &__heading {
         font-size: 2.25rem;
@@ -211,7 +214,8 @@
         display: flex;
     }
 
-    &__icon-star, &__icon-location {
+    &__icon-star,
+    &__icon-location {
         width: 1.75rem;
         height: 1.75rem;
         fill: var(--color-primary)
@@ -280,26 +284,27 @@
 }
 
 @keyframes pulsate {
-   0% {
-    transform: scale(1);
-    box-shadow: none;
-   }
-   
-   50% {
-    transform: scale(1.05);
-    box-shadow: 0 1rem 4rem rgba(0,0,0,.25);
-   }
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
 
-   100% {
-    transform: scale(1);
-    box-shadow: none;
-   }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
 }
 
 //////////////// Paragraph
 .paragraph:not(:last-of-type) {
     margin-bottom: 2rem;
 }
+
 //////////////// List
 .list {
     list-style: none;
@@ -331,6 +336,7 @@
         mask-size: cover;
     }
 }
+
 //////////////// Recommend
 .recommend {
     font-size: 1.3rem;
@@ -338,14 +344,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    &__count {
 
-    }
+    &__count {}
 
-    &__friends {
-
-    }
+    &__friends {}
 
     &__photo {
         box-sizing: content-box;
@@ -424,5 +426,68 @@
         font-size: 20rem;
         z-index: 1;
 
+    }
+}
+
+.cta {
+    padding: 3.5rem 0;
+    text-align: center;
+
+    &__book-now {
+        font-size: 1.2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.btn {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    position: relative;
+    overflow: hidden; // element outside of the button => will disappear
+    cursor: pointer;
+
+    &>* {
+        display: inline-block;
+        // set to height and width of parent element
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+    }
+
+    &__visible {
+        display: inline-block;
+        padding: 2rem 7.5rem;
+    }
+
+    &__invisible {
+        display: inline-block;
+        position: absolute;
+        padding: 2rem;
+        left: 0;
+        top: -100%;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+    }
+
+    &:hover &__visible {
+        transform: translateY(100%); // Nếu không dùng position absolute thì dùng translateY
+    }
+
+    &:hover &__invisible {
+        top: 0;
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
     }
 }
