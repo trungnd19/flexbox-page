@@ -10,6 +10,12 @@
     justify-content: center;
     align-items: center;
 
+    @include breakpoint-down(bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        background-color: var(--color-grey-light-2);
+    }
+
     &__input {
         font-family: inherit;
         font-size: inherit;
@@ -174,6 +180,11 @@
             justify-content: center;
             padding: 2rem;
         }
+
+        @include breakpoint-down(bp-small) {
+            flex-direction: column;
+            padding: 1.5rem .5rem;
+        }
     }
 
     &__icon {
@@ -181,6 +192,13 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor;
+
+        @include breakpoint-down(bp-small) {
+            margin-right: 0;
+            margin-bottom: .7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 
     @include breakpoint-down(bp-medium) {
@@ -228,6 +246,11 @@
         text-transform: uppercase;
         padding: 1.5rem 3rem;
         letter-spacing: 1px;
+
+        @include breakpoint-down(bp-small) {
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
     }
 
     // margin auto hack
@@ -262,17 +285,29 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include breakpoint-down(bp-small) {
+            padding: 0 1.5rem;
+        }
     }
 
     &__rating-average {
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -3px;
+
+        @include breakpoint-down(bp-small) {
+            font-size: 1.8rem;
+        }
     }
 
     &__rating-count {
         font-size: .8rem;
         text-transform: uppercase;
+
+        @include breakpoint-down(bp-small) {
+            font-size: .5rem;
+        }
     }
 }
 
