@@ -1,3 +1,59 @@
+@charset "UTF-8";
+/*
+  RESPONSIVE RULE:
+    https://www.figma.com/file/BzQxPA3yJon13FDhQH1ZI1/%5BBiz%5D-Website-Component?node-id=2711%3A39977
+
+  'Mobile-first' strategy recommended (use @mixin breakpoint).
+
+  How to?
+    Inside each scss file that needs to apply responsive design:
+
+  1️⃣ @import 'assets/scss/material/breakpoints';
+
+  2️⃣ Apply breakpoints as desired:
+      @include breakpoint(tablet|desktop|desktop-xl){
+        ...
+      }
+
+      or
+
+      @include breakpoint-down(mobile|tablet){
+        ...
+      }
+*/
+/*
+  =================================================================
+  Additional Info.
+
+  ⭐In media queries, why use em instead of px or rem?
+      https://zellwk.com/blog/media-query-units/
+      https://coder-coder.com/media-query-breakpoints/
+      https://stackoverflow.com/a/22262489
+
+  🤔[TL;DR]:
+    - Support users who changed there browser's default font size.
+    - It'll work for any device whose optimal default font size is not 16px (as well as those that are).
+    - Zoomable in all modern browsers (zoom function built into browser).
+    - Compatible with Safari (*).
+
+  ✨How to calculate the 'em' unit in media queries?
+    px = [em] x [browser’s internal font-size property].
+    
+    eg: 
+      browser’s initial value of font-size: 16px (**)
+      default font-size property in CSS: 32px (html {font-size: 200%;})
+      
+      → 1em = 16px; 87.5em = 87.5 * 16px = 1400px
+  
+  (*):  The em, rem unit in media queries always uses the default font-size in browser settings, and is not affected by any font-size changed by CSS (https://drafts.csswg.org/mediaqueries/#units)
+        EXCEPT for existing bug in WebKit engine - Safari, Chrome for iOS,... (correct me if I'm wrong, DM via WP or MS Team is ok, thx!). 
+  (**): How to change browser's default font size?
+          Firefox: http://mzl.la/1xKrygz
+          Chrome:  https://support.google.com/chrome/answer/96810
+
+  =================================================================
+  Have fun breaking the UI 😂
+*/
 /*
 COLORS
 
@@ -39,6 +95,9 @@ Grey dark 3: #999
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media (max-width: 68.75em) {
+    html {
+      font-size: 50%; } }
 
 * {
   margin: 0;
@@ -60,6 +119,10 @@ body {
   box-shadow: var(--shadow-dark);
   min-height: 50rem;
   max-width: 120rem; }
+  @media (max-width: 75em) {
+    .container {
+      margin: 0;
+      max-width: 100%; } }
 
 .header {
   height: 7rem;
@@ -72,6 +135,9 @@ body {
 
 .content {
   display: flex; }
+  @media (max-width: 56.25em) {
+    .content {
+      flex-direction: column; } }
 
 .sidebar {
   background-color: var(--color-grey-dark-1);
@@ -90,6 +156,9 @@ body {
   border-bottom: var(--line);
   background-color: var(--color-grey-light-1);
   font-size: 1.4rem; }
+  @media (max-width: 56.25em) {
+    .detail {
+      padding: 3rem; } }
 
 .description {
   background-color: #fff;
@@ -97,6 +166,10 @@ body {
   flex: 0 0 60%;
   margin-right: 4.5rem;
   padding: 3rem; }
+  @media (max-width: 56.25em) {
+    .description {
+      padding: 2rem;
+      margin-right: 3rem; } }
 
 .user-reviews {
   flex: 1;
@@ -189,6 +262,12 @@ body {
     position: relative; }
     .side-nav__item:not(:last-child) {
       margin-bottom: .5rem; }
+      @media (max-width: 56.25em) {
+        .side-nav__item:not(:last-child) {
+          margin-bottom: 0; } }
+    @media (max-width: 56.25em) {
+      .side-nav__item {
+        flex: 1; } }
   .side-nav__item::before {
     content: "";
     position: absolute;
@@ -214,17 +293,28 @@ body {
     align-items: center;
     position: relative;
     z-index: 10; }
+    @media (max-width: 56.25em) {
+      .side-nav__link:link, .side-nav__link:visited {
+        justify-content: center;
+        padding: 2rem; } }
   .side-nav__icon {
     width: 1.75rem;
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor; }
+  @media (max-width: 56.25em) {
+    .side-nav {
+      display: flex;
+      margin: 0; } }
 
 .legal {
   font-size: 1.2rem;
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem; }
+  @media (max-width: 56.25em) {
+    .legal {
+      display: none; } }
 
 .gallery {
   display: flex; }
@@ -336,6 +426,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between; }
+  .recommend__friends {
+    display: flex; }
   .recommend__photo {
     box-sizing: content-box;
     height: 4rem;
@@ -343,7 +435,7 @@ body {
     border-radius: 50%;
     border: 3px solid #fff; }
     .recommend__photo:not(:last-child) {
-      margin-right: -1.5rem; }
+      margin-right: -2rem; }
 
 .review {
   background-color: #fff;
@@ -352,6 +444,10 @@ body {
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden; }
+  @media (max-width: 56.25em) {
+    .review {
+      padding: 2rem;
+      margin-bottom: 3rem; } }
   .review__text {
     margin-bottom: 2rem;
     z-index: 10;
@@ -397,6 +493,9 @@ body {
     font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 2.5rem; }
+  @media (max-width: 56.25em) {
+    .cta {
+      padding: 2.5rem 0; } }
 
 .btn {
   font-size: 1.5rem;

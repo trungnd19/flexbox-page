@@ -123,6 +123,14 @@
 
         &:not(:last-child) {
             margin-bottom: .5rem;
+
+            @include breakpoint-down(bp-medium) {
+                margin-bottom: 0;
+            }
+        }
+
+        @include breakpoint-down(bp-medium) {
+            flex: 1;
         }
     }
 
@@ -161,6 +169,11 @@
         align-items: center;
         position: relative;
         z-index: 10;
+
+        @include breakpoint-down(bp-medium) {
+            justify-content: center;
+            padding: 2rem;
+        }
     }
 
     &__icon {
@@ -168,6 +181,11 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor;
+    }
+
+    @include breakpoint-down(bp-medium) {
+        display: flex;
+        margin: 0;
     }
 }
 
@@ -178,6 +196,10 @@
     color: var(--color-grey-light-4);
     text-align: center;
     padding: 2.5rem;
+
+    @include breakpoint-down(bp-medium) {
+        display: none;
+    }
 }
 
 
@@ -347,7 +369,9 @@
 
     &__count {}
 
-    &__friends {}
+    &__friends {
+        display: flex;
+    }
 
     &__photo {
         box-sizing: content-box;
@@ -357,7 +381,7 @@
         border: 3px solid #fff;
 
         &:not(:last-child) {
-            margin-right: -1.5rem;
+            margin-right: -2rem;
         }
     }
 }
@@ -371,6 +395,11 @@
     margin-bottom: 3.5rem;
     position: relative;
     overflow: hidden;
+
+    @include breakpoint-down(bp-medium) {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
 
     &__text {
         margin-bottom: 2rem;
@@ -438,6 +467,10 @@
         font-weight: 300;
         text-transform: uppercase;
         margin-bottom: 2.5rem;
+    }
+
+    @include breakpoint-down(bp-medium) {
+        padding: 2.5rem 0;
     }
 }
 
